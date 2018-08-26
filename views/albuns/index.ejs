@@ -11,6 +11,7 @@
 </div>
 <div>
     <div>
+        <%results.forEach(function(albums){%>
         <ul>
             <li>
                 <div>itunes icon</div>
@@ -19,18 +20,19 @@
                 <div>albun icon</div>
             </li>
             <li>
-                <div>artist</div>
+                <div><%=albums["im:artist"]["label"]%></div>
             </li>
             <li>
-                <div>albun´s name</div>
+                <div><%=albums["im:name"]["label"]%></div>
             </li>
             <li>
-                <div>release data</div>
+                <div><%=albums["im:releaseDate"]["label"]%></div>
             </li>
             <li>
-                <div>price</div>
+                <div><%=albums["im:price"]["label"]%></div>
             </li>
         </ul>
+        <%})%>
     </div>
 </div>
 
