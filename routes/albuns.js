@@ -7,7 +7,6 @@ router.get("/", function(req, res){
         if(!error && response.statusCode == 200){
             var data = JSON.parse(body);
             var results = data["feed"]["entry"];
-            console.log(results["0"]["title"]);
             res.render("albuns/index.ejs", {results: results});
         }
     });
