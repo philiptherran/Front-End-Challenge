@@ -16,7 +16,7 @@ app.use(function(req, res, next){
     next();
 });
 
-app.use("/albuns",albunsRoutes);
+app.use("/albums",albunsRoutes);
 app.use(indexRoutes);
 
 app.listen(process.env.PORT, process.env.IP);

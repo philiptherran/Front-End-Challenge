@@ -5,36 +5,53 @@
         Welcome to musicApp
         <div class="lead font-weight-normal">
             know more about the best music in the world
-            <a class="btn btn-outline-secondary">let's get started</a>
+            <div>
+                <a class="btn btn-outline-secondary">let's get started</a>
+            </div>
         </div>
     </div>
     
 </div>
-<div>
-    <div>
+<div class="container">
+    
         <%results.forEach(function(albums){%>
-        <ul>
+        <a href="/albums/<%=albums["id"]["attributes"]["im:id"]%>">
+            <div class="row bg-light">
+        <div class="col-sm-2">
             <li>
-                <div>itunes icon</div>
+                itunes icon
             </li>
+        </div>
+        <div class="col-sm-2">
             <li>
-                <div>albun icon</div>
+                albun icon
             </li>
+        </div>
+        <div class="col-sm-2">
             <li>
-                <div><%=albums["im:artist"]["label"]%></div>
+                <%=albums["im:artist"]["label"]%>
             </li>
+        </div>    
+        <div class="col-sm-2">    
             <li>
-                <div><%=albums["im:name"]["label"]%></div>
+                <%=albums["im:name"]["label"]%>
             </li>
+        </div>
+        <div class="col-sm-2">
             <li>
-                <div><%=albums["im:releaseDate"]["label"]%></div>
+                <%=albums["im:releaseDate"]["label"]%>
             </li>
+        </div>
+        <div class="col-sm-2">
             <li>
-                <div><%=albums["im:price"]["label"]%></div>
+                <%=albums["im:price"]["label"]%>
             </li>
-        </ul>
+        </div>   
+        
+        </div>
+        </a> 
+        <br>
         <%})%>
-    </div>
 </div>
 
 
