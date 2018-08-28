@@ -1,16 +1,46 @@
 <% include ../partials/header.ejs%>
 
-<h1>
-    
-    titulo del album
-    artista
-</h1>
-
-<p>imagen estilo carta del album</p>
-<p>Lista de canciones.
-    este es el id: <%=id%>
-</p>
-
-
+<div class="container">
+    <div class="card">
+        <div class="row">
+            <div class="col-sm-4">
+                <%var str = results["0"]["artworkUrl100"]%>
+                <%str = str.replace("100x100","200x200")%>
+                <img class="card-img-top" src="<%=str%>">
+            </div>
+            <div class="col-sm-4">
+                <div class="centro">
+                    <div>
+                        <%=results["0"]["collectionName"]%>
+                    </div>
+                    <div>
+                        <%=results["0"]["artistName"]%>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="centro">
+                    <%=results["0"]["collectionPrice"]%>
+                </div>
+            </div>
+        </div>
+        <div class="list-group list-group-flush">
+            <%for(var i=1; i<results.length; i++){%>
+                <div class="list-group-item">    
+                    <div class=row>    
+                        <div class="col-sm-3"><%=results[i]["kind"]%></div>
+                        <%if(results[i]["trackName"].length > 25){%>
+                            <div class="col-sm-3"><%=results[i]["trackName"].substring(0,25)%>...</div>
+                        <%} else{%>  
+                            <div class="col-sm-3"><%=results[i]["trackName"]%></div>
+                        <%}%>    
+                        <div class="col-sm-3"><%=results[i]["releaseDate"].substring(0,10)%></div>
+                        <div class="col-sm-3">$<%=results[i]["trackPrice"]%></div>
+                    </div>    
+                </div>    
+            <%}%>
+        </div>    
+    </div>    
+</div>
 
 <% include ../partials/footer.ejs%>

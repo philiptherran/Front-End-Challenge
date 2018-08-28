@@ -10,50 +10,34 @@
             </div>
         </div>
     </div>
-    
 </div>
 <div class="container">
-    
-        <%results.forEach(function(albums){%>
-        <a href="/albums/<%=albums["id"]["attributes"]["im:id"]%>">
-            <div class="row bg-light">
+  <%results.forEach(function(albums){%>
+    <a href="/albums/<%=albums["id"]["attributes"]["im:id"]%>">
+      <div class="row bg-light">
         <div class="col-sm-2">
-            <li>
-                itunes icon
-            </li>
+          <img class="rounded float-left" src="<%=albums["im:image"]["0"]["label"]%>">
         </div>
-        <div class="col-sm-2">
-            <li>
-                albun icon
-            </li>
-        </div>
-        <div class="col-sm-2">
-            <li>
-                <%=albums["im:artist"]["label"]%>
-            </li>
+        <div class="col-sm-3">
+          <%=albums["im:artist"]["label"]%>
         </div>    
-        <div class="col-sm-2">    
-            <li>
-                <%=albums["im:name"]["label"]%>
-            </li>
+        <div class="col-sm-3">
+          <%if(albums["im:name"]["label"].length > 16){%>
+            <%=albums["im:name"]["label"].substring(0,16)%>...
+          <%} else{%>
+            <%=albums["im:name"]["label"]%>
+          <%}%>
         </div>
-        <div class="col-sm-2">
-            <li>
-                <%=albums["im:releaseDate"]["label"]%>
-            </li>
+        <div class="col-sm-3">
+          <%=albums["im:releaseDate"]["label"].substring(0,10)%>
         </div>
-        <div class="col-sm-2">
-            <li>
-                <%=albums["im:price"]["label"]%>
-            </li>
+        <div class="col-sm-1">
+          <%=albums["im:price"]["label"]%>
         </div>   
-        
-        </div>
-        </a> 
-        <br>
-        <%})%>
+      </div>
+    </a> 
+    <br>
+  <%})%>
 </div>
-
-
 
 <% include ../partials/footer.ejs%>

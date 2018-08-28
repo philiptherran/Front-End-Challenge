@@ -28,3 +28,33 @@ body {
   font-weight: lighter;
   font-size: 32pt;
 }
+
+.container{
+  padding-top: 10vh;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+.col-sm-2{
+  padding-left: 0;
+}
+
+.card-img-top{
+  max-width: 16vw;
+}
+
+.centro{
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+}

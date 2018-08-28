@@ -11,10 +11,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 
-app.use(function(req, res, next){
+/*app.use(function(req, res, next){
     //res.locals.user = req.user;
     next();
-});
+});*/
 
 app.use("/albums",albunsRoutes);
 app.use(indexRoutes);
