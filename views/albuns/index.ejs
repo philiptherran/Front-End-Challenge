@@ -1,41 +1,50 @@
 <% include ../partials/header.ejs%>
 
 <div class="presentation_bg">
-    <div class="presentation_header">
+    <div class="presentation_header centro">
         Welcome to musicApp
         <div class="lead font-weight-normal">
             know more about the best music in the world
             <div>
-                <a class="btn btn-outline-secondary">let's get started</a>
+                <a class="btn btn-dark">let's get started</a>
             </div>
         </div>
     </div>
+    <ul class="presentation_bg">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
 </div>
 <div class="container">
   <%results.forEach(function(albums){%>
-    <a href="/albums/<%=albums["id"]["attributes"]["im:id"]%>">
-      <div class="row bg-light">
-        <div class="col-sm-2">
-          <img class="rounded float-left" src="<%=albums["im:image"]["0"]["label"]%>">
+    <div class="card border-info">  
+      <a href="/albums/<%=albums["id"]["attributes"]["im:id"]%>">
+        <div class="row">
+          <div class="col-sm-2">
+            <img class=" centro rounded float-left" src="<%=albums["im:image"]["0"]["label"]%>">
+          </div>
+          <div class="col-sm-3">
+            <div class="centro"><%=albums["im:artist"]["label"]%></div>
+          </div>    
+          <div class="col-sm-3">
+            <%if(albums["im:name"]["label"].length > 16){%>
+              <div class="centro"><%=albums["im:name"]["label"].substring(0,16)%>...</div>
+            <%} else{%>
+              <div class="centro"><%=albums["im:name"]["label"]%></div>
+            <%}%>
+          </div>
+          <div class="col-sm-3">
+            <div class="centro"><%=albums["im:releaseDate"]["label"].substring(0,10)%></div>
+          </div>
+          <div class="col-sm-1">
+            <div class="centro"><%=albums["im:price"]["label"]%></div>
+          </div>   
         </div>
-        <div class="col-sm-3">
-          <%=albums["im:artist"]["label"]%>
-        </div>    
-        <div class="col-sm-3">
-          <%if(albums["im:name"]["label"].length > 16){%>
-            <%=albums["im:name"]["label"].substring(0,16)%>...
-          <%} else{%>
-            <%=albums["im:name"]["label"]%>
-          <%}%>
-        </div>
-        <div class="col-sm-3">
-          <%=albums["im:releaseDate"]["label"].substring(0,10)%>
-        </div>
-        <div class="col-sm-1">
-          <%=albums["im:price"]["label"]%>
-        </div>   
-      </div>
-    </a> 
+      </a> 
+    </div>  
     <br>
   <%})%>
 </div>

@@ -12,25 +12,40 @@ body {
   width: 100%;
   height: 100vh;
   z-index: 0;
+  list-style: none;
+}
+
+.presentation_bg{
   margin: 0;
   padding: 0;
-  background-color: #0f1626;
   color: white;
   display: inline-block;
 }
 
 .presentation_header{
-  position: relative;
-  top: 50%;
-  transform: perspective(1px) translateY(-50%);
   z-index: 1;
   text-align: center;
   font-weight: lighter;
   font-size: 32pt;
 }
 
+.presentation_bg li{
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite; 
+}
+
 .container{
   padding-top: 10vh;
+  padding-bottom: 10vh;
 }
 
 a:visited {
@@ -45,8 +60,8 @@ a:active {
   text-decoration: none;
 }
 
-.col-sm-2{
-  padding-left: 0;
+a{
+  color:black;
 }
 
 .card-img-top{
@@ -57,4 +72,59 @@ a:active {
   position: relative;
   top: 50%;
   transform: perspective(1px) translateY(-50%);
+}
+
+.presentation_bg li:nth-child(1) { 
+  background-image: url(https://scontent.fsal2-1.fna.fbcdn.net/v/t1.0-9/40262170_10155805358641676_8873833910245523456_n.jpg?_nc_cat=0&oh=03acd0fda327c01c656444af2d889e72&oe=5BFB91DF) 
+}
+.presentation_bg li:nth-child(2) { 
+  background-image: url(https://scontent.fsal2-1.fna.fbcdn.net/v/t1.0-9/40374972_10155805359041676_1848857462422110208_n.jpg?_nc_cat=0&oh=a4a40451c0b7e2105b58ac6493841acb&oe=5C2E07A8);
+  animation-delay: 10s; 
+}
+.presentation_bg li:nth-child(3) { 
+  background-image: url(https://scontent.fsal2-1.fna.fbcdn.net/v/t1.0-9/40248456_10155805358836676_6991681543517241344_n.jpg?_nc_cat=0&oh=9e783c686d977c21e80a17c02dc3c52d&oe=5BF9E96D);
+  animation-delay: 20s; 
+}
+.presentation_bg li:nth-child(4) { 
+  background-image: url(https://scontent.fsal2-1.fna.fbcdn.net/v/t1.0-9/40245333_10155805359136676_7210584507492073472_n.jpg?_nc_cat=0&oh=17f5c99af9c71591488a4bde5ef3fa8c&oe=5BFC1C92);
+  animation-delay: 30s; 
+}
+.presentation_bg li:nth-child(5) { 
+  background-image: url(https://scontent.fsal2-1.fna.fbcdn.net/v/t1.0-9/40359341_10155805359031676_9169739139552116736_n.jpg?_nc_cat=0&oh=6025638d17c0a100f7dbbc9b97ee4902&oe=5BEFF097);
+  animation-delay: 40s; 
+}
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .presentation_bg li {
+	opacity: 1;
+}
+
+.animate_bottom{
+  position:relative;
+  animation:animatebottom 1s;
+}
+@keyframes animatebottom{
+  from{
+    bottom:-600px;
+    opacity:0
+  } to{
+    bottom:0;
+    opacity:1}
 }
