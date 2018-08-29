@@ -1,16 +1,26 @@
 var express = require("express");
 var router = express.Router();
 var request = require("request");
+var FuzzySearch = require('fuzzy-search');
 
 //index route. main page
 router.get("/", function(req, res){
-    //taking the data from the json url.
+    //data from the json url.
     request("https://itunes.apple.com/us/rss/topalbums/limit=100/json", function(error, response, body){
-        //https://itunes.apple.com/lookup?id=211192863&entity=song
         if(!error && response.statusCode == 200){
-            var data = JSON.parse(body);
-            var results = data["feed"]["entry"];
-            res.render("albuns/index.ejs", {results: results});
+            var data = JSON.parse(body); //convert in an object
+            var results = data.feed.entry;
+            if(req.query.search){ //asking for a search
+                var msearch= req.query.search;
+                //loking for result by the title (author-album name)
+                //results= JSON.parse(JSON.stringify(results).split('"im:name":').join('"name":'));
+                var searcher = new FuzzySearch(results, ['title.label'], { // search parameters
+                  sort: true,
+                });
+                results = searcher.search(msearch); //filter data
+                return res.render("albuns/index.ejs", {results: results});
+            }
+            return res.render("albuns/index.ejs", {results: results});
         }
     });
 });
