@@ -20,7 +20,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 
 app.use(require('express-session')({
-    secret:process.env.DATABASEURL || "este es un secreto",
+    secret:process.env.SECRET || "este es un secreto",
     resave: false,
     saveUninitialized: false
 }));
